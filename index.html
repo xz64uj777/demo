@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Demolition Zone 3D</title>
+  <link rel="stylesheet" href="src/styles/main.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r147/three.min.js"></script>
+</head>
+<body>
+  <div id="app">
+    <div id="canvas-wrap"></div>
+
+    <div id="hud">
+      <div id="hud-top">
+        <div class="hud-block">
+          <span class="label">SCORE</span>
+          <span id="score">0</span>
+        </div>
+        <div class="hud-block">
+          <span class="label">LEVEL</span>
+          <span id="level">1</span>
+        </div>
+        <div class="hud-block">
+          <span class="label">BLOCKS</span>
+          <span id="blocks">0</span>
+        </div>
+        <div class="hud-block">
+          <span class="label">TIME</span>
+          <span id="time">90</span>
+        </div>
+      </div>
+      <div id="combo-display" class="hidden">COMBO x<span id="combo">1</span></div>
+    </div>
+
+    <div id="touch-zone" aria-hidden="true"></div>
+
+    <div id="controls-hint">
+      <span class="desktop-only">A/D or ←/→ swing · W/S or ↑/↓ length · SPACE smash · P pause · R restart</span>
+      <span class="mobile-only">Drag to swing · Pinch length · Tap smash</span>
+    </div>
+
+    <div id="mobile-btns">
+      <button type="button" id="btn-smash" aria-label="Smash">SMASH</button>
+      <button type="button" id="btn-pause-m" aria-label="Pause">⏸</button>
+    </div>
+
+    <div id="overlay" class="overlay">
+      <div class="panel">
+        <h1>DEMOLITION ZONE</h1>
+        <p class="tagline">Swing the wrecking ball. Flatten the city.</p>
+        <ul class="tips">
+          <li>Build momentum before you strike</li>
+          <li>Chain hits for combo multipliers</li>
+          <li>Clear all blocks before time runs out</li>
+        </ul>
+        <button type="button" id="btn-start" class="primary">START DEMOLITION</button>
+      </div>
+    </div>
+
+    <div id="pause-overlay" class="overlay hidden">
+      <div class="panel">
+        <h2>PAUSED</h2>
+        <button type="button" id="btn-resume" class="primary">RESUME</button>
+        <button type="button" id="btn-restart-p" class="secondary">RESTART</button>
+      </div>
+    </div>
+
+    <div id="end-overlay" class="overlay hidden">
+      <div class="panel">
+        <h2 id="end-title">LEVEL CLEAR</h2>
+        <p id="end-stats"></p>
+        <button type="button" id="btn-next" class="primary">NEXT LEVEL</button>
+        <button type="button" id="btn-retry" class="secondary">RETRY</button>
+      </div>
+    </div>
+  </div>
+  <script src="src/game/Physics.js"></script>
+  <script src="src/game/Building.js"></script>
+  <script src="src/game/WreckingBall.js"></script>
+  <script src="src/game/Game.js"></script>
+  <script src="src/main.js"></script>
+</body>
+</html>
